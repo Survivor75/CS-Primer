@@ -1,1 +1,1 @@
-## GIT CHEAT SHEET
+## Git Cheat Sheet
