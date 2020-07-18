@@ -613,3 +613,8 @@ Here’s what each column mean:
 
 `scp` allows you to secure copy files to and from another host in the network.
 
+`scp source_file_name username@destination_host:destination_folder`
+
+One of parameter that can faster your file transfer is “-C” parameter. The “-C” parameter will compress your files on the go. The unique thing is the compression is only happen in the network. When the file is arrived to the destination server, it will returning into the original size as before the compression happen.
+
+`scp -Cpv messages.log foo@707.x.x.x:.`
