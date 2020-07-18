@@ -2,17 +2,17 @@
 
 ### Basics And Navigation
 
-**Home directory**
+**Home Directory**
 
     ~
 
-**Present working directory**
+**Present Working Directory**
 
 By default, `pwd` will list the “logical” path of your current directory. This means it will treat symlinked paths as if they were the actual paths.
 
 If we want to see the actual physical path, with all of the symlinks resolved, we can use the `-P` flag, `pwd -P`.
 
-**List files and directories**
+**List Files And Directories**
 
 By default, `ls` will operate in the current directory that you’re in. However, you may want to find out what files are in another directory, without first leaving your current directory. The `ls` command will let you pass it a path to work on, `ls /usr/local/`.
 
@@ -54,7 +54,7 @@ Navigate to home directory:
 
     cd
 
-**Creating directories**
+**Creating Directories**
 
     mkdir foo
     
@@ -281,11 +281,11 @@ Count the number of times a pattern is found in a file:
 
     grep -c python README.md 
 
-**Displaying line numbers.**
+**Displaying Line Numbers.**
 
     grep -n python README.md
 
-**Case insensitive search.**
+**Case Insensitive Search.**
 
     grep -i python README.md 
 
@@ -446,7 +446,7 @@ Filesystem     1K-blocks      Used Available Use% Mounted on
 
 ```
 
-**Show Disk Space Usage in Human Readable Format**
+**Show Disk Space Usage In Human Readable Format**
 
 By default, the  `df`  command shows the disk space in 1-kilobyte blocks and the size of used and available disk space in kilobytes.
 
