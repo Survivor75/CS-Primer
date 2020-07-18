@@ -1,5 +1,7 @@
 ## Git Cheat Sheet
 
+![git](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git.png)
+
 ### SETUP
 
 Configuring user information used across all local repositories:
@@ -92,9 +94,12 @@ Diff of what is staged but not yet commited.
 
     git commit -m “[descriptive message]” 
 
+![git-flow](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git-1.png)
+
 Commit your staged content as a new commit snapshot.
 
     git cherry-pick <commit-hash>
+![cherry-pick](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git-cherry-pick-a-commit.jpg)
 
 Cherry picking in Git means to choose a commit from one branch and apply it onto another. This is in contrast with other ways such as  `merge`  and  `rebase`  which normally apply many commits onto another branch.
 
@@ -142,3 +147,11 @@ Write working from top of stash stack.
     git stash drop 
 
 Discard the changes from top of stash stack.
+
+
+![stash](https://github.com/Survivor75/Developer-Handbook/blob/master/images/how-git-stash-it.svg)
+
+
+## More
+
+When you feel, oh shit! go to  [OhShitGit](https://ohshitgit.com/)
