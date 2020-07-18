@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Docker is a platform to develop, deploy, and run applications inside containers. Docker is essentially synonymous with containerization. If you’re a current or aspiring software developer or data scientist.
+Docker is a platform to develop, deploy, and run applications inside containers. Docker is essentially synonymous with containerization.
 
 ## Concepts
 
