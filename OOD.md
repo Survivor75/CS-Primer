@@ -354,3 +354,105 @@ Like static methods in a class, a static method defined by an interface can be c
 
 A private interface method can be called only by a default method or another private method defined by the same interface. Because a private interface method is specified private, it cannot be used by code outside the interface in which it is defined. This restriction includes subinterfaces because a private interface method is not inherited by a subinterface.
 
+## SOLID Design Principles 
+
+[The First 5 Principles of Object Oriented Design](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+
+[Becoming a better developer by using the SOLID design principles by Katerina Trajchevska](https://www.youtube.com/watch?v=rtmFCcjEgEw&list=PLQLGaWLA2XKMTlPorwfwhiI6OT45rugtH&index=7&t=679s)
+
+## Design Patterns
+
+### Strategy Pattern
+
+[Strategy Pattern](https://www.youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=2&t=0s)
+
+    """
+    Define a family of algorithms, encapsulate each one, and make them
+    interchangeable. Strategy lets the algorithm vary independently from
+    clients that use it.
+    """
+    
+    import abc
+    
+    class Context:
+        """
+     Define the interface of interest to clients.
+     Maintain a reference to a Strategy object.
+     """
+    
+        def __init__(self, strategy):
+            self._strategy = strategy
+    
+        def context_interface(self):
+            self._strategy.algorithm_interface()
+    
+    class Strategy(metaclass=abc.ABCMeta):
+        """
+     Declare an interface common to all supported algorithms. Context
+     uses this interface to call the algorithm defined by a
+     ConcreteStrategy.
+     """
+    
+        @abc.abstractmethod
+        def algorithm_interface(self):
+            pass
+    
+    class ConcreteStrategyA(Strategy):
+        """
+     Implement the algorithm using the Strategy interface.
+     """
+    
+        def algorithm_interface(self):
+            pass
+    
+    class ConcreteStrategyB(Strategy):
+        """
+     Implement the algorithm using the Strategy interface.
+     """
+    
+        def algorithm_interface(self):
+            pass
+    
+    def main():
+        concrete_strategy_a = ConcreteStrategyA()
+        context = Context(concrete_strategy_a)
+        context.context_interface()
+    
+    if __name__ == "__main__":
+        main()
+
+### Observer Pattern
+
+[Observer Pattern](https://www.youtube.com/watch?v=_BpmfnqjgzQ&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=3&t=0s)
+
+### Decorator Pattern
+
+[Decorator Pattern](https://www.youtube.com/watch?v=GCraGHx6gso&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=4&t=572s)
+
+### Factory Pattern
+
+[Factory Pattern](https://www.youtube.com/watch?v=EcFVTgRHJLM&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=5&t=0s)
+
+### Singelton Pattern
+
+[Singelton Pattern](https://www.youtube.com/watch?v=hUE_j6q0LTQ&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=7&t=0s)
+
+### Facade Pattern
+
+[Facade Pattern](https://www.youtube.com/watch?v=K4FkHVO5iac&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=10&t=0s)
+
+### Adapter Pattern
+
+[Adapter Pattern](https://www.youtube.com/watch?v=2PKQtcJjYvc&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=9&t=0s)
+
+### Proxy Pattern
+
+[Proxy Pattern](https://www.youtube.com/watch?v=NwaabHqPHeM&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=11&t=0s)
+
+### Command Pattern
+
+[Command Pattern](https://www.youtube.com/watch?v=9qA5kw8dcSU&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=8&t=965s)
+
+### Abstract Factory Pattern
+
+[Abstract Factory Pattern](https://www.youtube.com/watch?v=v-GiuMmsXj4&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=6&t=0s)
