@@ -1,6 +1,6 @@
 ## Git Cheat Sheet
 
-![git](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git.png)
+![git](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Git.png)
 
 ### SETUP
 
@@ -94,12 +94,12 @@ Diff of what is staged but not yet commited.
 
     git commit -m “[descriptive message]” 
 
-![git-flow](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git-1.png)
+![git-flow](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Git-1.png)
 
 Commit your staged content as a new commit snapshot.
 
     git cherry-pick <commit-hash>
-![cherry-pick](https://github.com/Survivor75/Developer-Handbook/blob/master/images/git-cherry-pick-a-commit.jpg)
+![cherry-pick](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Git-Cherry-Pick-A-Commit.jpg)
 
 Cherry picking in Git means to choose a commit from one branch and apply it onto another. This is in contrast with other ways such as  `merge`  and  `rebase`  which normally apply many commits onto another branch.
 
@@ -149,7 +149,7 @@ Write working from top of stash stack.
 Discard the changes from top of stash stack.
 
 
-![stash](https://github.com/Survivor75/Developer-Handbook/blob/master/images/how-git-stash-it.svg)
+![stash](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/How-Git-Stash-It.svg)
 
 
 ## More
