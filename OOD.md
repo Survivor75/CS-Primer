@@ -366,137 +366,196 @@ A private interface method can be called only by a default method or another pri
 
 [Strategy Pattern](https://www.youtube.com/watch?v=v9ejT8FO-7I&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=2&t=0s)
 
-    """
-    Define a family of algorithms, encapsulate each one, and make them
-    interchangeable. Strategy lets the algorithm vary independently from
-    clients that use it.
-    """
+    // 1. Define the interface of the algorithm
+    interface Strategy {
+        void solve();
+    }
     
-    import abc
+    // 2. Bury implementation
+    @SuppressWarnings("ALL")
+    abstract class StrategySolution implements Strategy {
+        // 3. Template Method
+        public void solve() {
+            start();
+            while (nextTry() && !isSolution()) {}
+            stop();
+        }
     
-    class Context:
-        """
-     Define the interface of interest to clients.
-     Maintain a reference to a Strategy object.
-     """
+        abstract void start();
+        abstract boolean nextTry();
+        abstract boolean isSolution();
+        abstract void stop();
+    }
     
-        def __init__(self, strategy):
-            self._strategy = strategy
+    class FOO extends StrategySolution {
+        private int state = 1;
     
-        def context_interface(self):
-            self._strategy.algorithm_interface()
+        protected void start() {
+            System.out.print("Start  ");
+        }
     
-    class Strategy(metaclass=abc.ABCMeta):
-        """
-     Declare an interface common to all supported algorithms. Context
-     uses this interface to call the algorithm defined by a
-     ConcreteStrategy.
-     """
+        protected void stop() {
+            System.out.println("Stop");
+        }
     
-        @abc.abstractmethod
-        def algorithm_interface(self):
-            pass
+        protected boolean nextTry() {
+            System.out.print("NextTry-" + state++ + "  ");
+            return true;
+        }
     
-    class ConcreteStrategyA(Strategy):
-        """
-     Implement the algorithm using the Strategy interface.
-     """
+        protected boolean isSolution() {
+            System.out.print("IsSolution-" + (state == 3) + "  ");
+            return (state == 3);
+        }
+    }
     
-        def algorithm_interface(self):
-            pass
+    // 2. Bury implementation
+    abstract class StrategySearch implements Strategy {
+        // 3. Template Method
+        public void solve() {
+            while (true) {
+                preProcess();
+                if (search()) {
+                    break;
+                }
+                postProcess();
+            }
+        }
     
-    class ConcreteStrategyB(Strategy):
-        """
-     Implement the algorithm using the Strategy interface.
-     """
+        abstract void preProcess();
+        abstract boolean search();
+        abstract void postProcess();
+    }
     
-        def algorithm_interface(self):
-            pass
+    @SuppressWarnings("ALL")
+    class BAR extends StrategySearch {
+        private int state = 1;
     
-    def main():
-        concrete_strategy_a = ConcreteStrategyA()
-        context = Context(concrete_strategy_a)
-        context.context_interface()
+        protected void preProcess()  {
+            System.out.print("PreProcess  ");
+        }
     
-    if __name__ == "__main__":
-        main()
+        protected void postProcess() {
+            System.out.print("PostProcess  ");
+        }
+    
+        protected boolean search() {
+            System.out.print("Search-" + state++ + "  ");
+            return state == 3 ? true : false;
+        }
+    }
+    
+    // 4. Clients couple strictly to the interface
+    public class StrategyDemo {
+        // client code here
+        private static void execute(Strategy strategy) {
+            strategy.solve();
+        }
+    
+        public static void main( String[] args ) {
+            Strategy[] algorithms = {new FOO(), new BAR()};
+            for (Strategy algorithm : algorithms) {
+                execute(algorithm);
+            }
+        }
+    }
+    
+
+
+### Output
+    
+    start  nextTry-1  isSolution-false  nextTry-2  isSolution-true  stop
+    preProcess  search-1  postProcess  preProcess  search-2
+
 
 ### Observer Pattern
 
 [Observer Pattern](https://www.youtube.com/watch?v=_BpmfnqjgzQ&list=PLrhzvIcii6GNjpARdnO4ueTUAVR9eMBpc&index=3&t=0s)
 
-    """
-    Define a one-to-many dependency between objects so that when one object
-    changes state, all its dependents are notified and updatedautomatically.
-    """
+    interface AlarmListener {
+        void alarm();
+    }
     
-    import abc
+    class SensorSystem {
+        private Vector listeners = new Vector();
     
-    class Subject:
-        """
-     Know its observers. Any number of Observer objects may observe a
-     subject.
-     Send a notification to its observers when its state changes.
-     """
+        public void register(AlarmListener alarmListener) {
+            listeners.addElement(alarmListener);
+        }
     
-        def __init__(self):
-            self._observers = set()
-            self._subject_state = None
+        public void soundTheAlarm() {
+            for (Enumeration e = listeners.elements(); e.hasMoreElements();) {
+                ((AlarmListener) e.nextElement()).alarm();
+            }
+        }
+    }
     
-        def attach(self, observer):
-            observer._subject = self
-            self._observers.add(observer)
+    class Lighting implements AlarmListener {
+        public void alarm() {
+            System.out.println("lights up");
+        }
+    }
     
-        def detach(self, observer):
-            observer._subject = None
-            self._observers.discard(observer)
+    class Gates implements AlarmListener {
+        public void alarm() {
+            System.out.println("gates close");
+        }
+    }
     
-        def _notify(self):
-            for observer in self._observers:
-                observer.update(self._subject_state)
+    class CheckList {
+        // Template Method design pattern
+        public void byTheNumbers() {
+            localize();
+            isolate();
+            identify();
+        }
     
-        @property
-        def subject_state(self):
-            return self._subject_state
+        protected void localize() {
+            System.out.println("   establish a perimeter");
+        }
     
-        @subject_state.setter
-        def subject_state(self, arg):
-            self._subject_state = arg
-            self._notify()
+        protected void isolate() {
+            System.out.println("   isolate the grid");
+        }
     
-    class Observer(metaclass=abc.ABCMeta):
-        """
-     Define an updating interface for objects that should be notified of
-     changes in a subject.
-     """
+        protected void identify() {
+            System.out.println("   identify the source");
+        }
+    }
     
-        def __init__(self):
-            self._subject = None
-            self._observer_state = None
+    // class inherit.
+    // type inheritance
+    class Surveillance extends CheckList implements AlarmListener {
+        public void alarm() {
+            System.out.println("Surveillance - by the numbers:");
+            byTheNumbers();
+        }
     
-        @abc.abstractmethod
-        def update(self, arg):
-            pass
+        protected void isolate() {
+            System.out.println("   train the cameras");
+        }
+    }
     
-    class ConcreteObserver(Observer):
-        """
-     Implement the Observer updating interface to keep its state
-     consistent with the subject's.
-     Store state that should stay consistent with the subject's.
-     """
-    
-        def update(self, arg):
-            self._observer_state = arg
-            # ...
-    
-    def main():
-        subject = Subject()
-        concrete_observer = ConcreteObserver()
-        subject.attach(concrete_observer)
-        subject.subject_state = 123
-    
-    if __name__ == "__main__":
-        main()
+    public class ObservserDemo {
+        public static void main( String[] args ) {
+            SensorSystem sensorSystem = new SensorSystem();
+            sensorSystem.register(new Gates());
+            sensorSystem.register(new Lighting());
+            sensorSystem.register(new Surveillance());
+            sensorSystem.soundTheAlarm();
+        }
+    }
+
+### Output
+
+    gates close
+    lights up
+    Surveillance - by the numbers:
+       establish a perimeter
+       train the cameras
+       identify the source
+
+
 
 ### Decorator Pattern
 
