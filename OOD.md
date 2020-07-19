@@ -1,46 +1,44 @@
+ 1. Fundamentals
+	 - Class
+	 - Object
+	 - Constructors
+	 - This
+	 - Garbage Collection
+	 - Argument Passing
+	 - Access Control
+	 - Static
+	 - Final
+	 - Nested and Inner Classes
+	 - Inheritance
+	 - Super
+	 - Multilevel Hierarchy
+	 - When Constructors Are Executed
+	 - Method Overriding
+	 - Dynamic Method Dispatch
+	 - Abstract Class
+	 - Final With Inheritance
+	 - Packages
+	 - Packages And Member Access
+	 - Interfaces
+	 - Use static Methods in an Interface
+	 - Private Interface Methods 
+2. SOLID Design Principles 
+	 - The First 5 Principles of Object Oriented Design
+	 - Becoming a better developer by using the SOLID design principles by Katerina Trajchevska
+3. Design Patterns
+	 - Strategy Pattern
+	 - Observer Pattern
+	 - Decorator Pattern
+	 - Factory Pattern
+	 - Singelton Pattern
+	 - Facade Pattern
+	 - Adapter Pattern
+	 - Proxy Pattern
+	 - Command Pattern
+	 - Abstract Factory Pattern
+4. Design Problems-Solutions
 
-## Table Of Contents:
 
-1 Fundamentals
-  * Class
-  * Object
-  * Constructors
-  * This
-  * Garbage Collection
-  * Argument Passing
-  * Access Control
-  * Static
-  * Final
-  * Nested and Inner Classes
-  * Inheritance
-  * Super
-  * Multilevel Hierarchy
-  * When Constructors Are Executed
-  * Method Overriding
-  * Dynamic Method Dispatch
-  * Abstract Class
-  * Final With Inheritance
-  * Packages
-  * Packages And Member Access
-  * Interfaces
-  * Use static Methods in an Interface
-  * Private Interface Methods
-
-2 Design Patterns
-  * Strategy Pattern
-  * Observer Pattern
-  * Decorator Pattern
-  * Factory Pattern
-  * Abstract Factory Pattern
-  * Singelton Pattern
-  * Command Pattern
-  * Adapter Pattern
-  * Facade Pattern
-  * Proxy Pattern
-
-3 SOLID Design Principles
-
-4 Design Problems-Solutions
 
 ## Fundamentals
 
