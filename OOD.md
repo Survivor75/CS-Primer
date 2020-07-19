@@ -260,7 +260,7 @@ You can require that certain methods be overridden by subclasses by specifying t
 
 Any class that contains one or more abstract methods must also be declared abstract. To declare a class abstract, you simply use the abstract keyword in front of the class keyword at the beginning of the class declaration. There can be no objects of an abstract class. That is, an abstract class cannot be directly instantiated with the new operator. Such objects would be useless, because an abstract class is not fully defined. Also, you cannot declare abstract constructors, or abstract static methods. Any subclass of an abstract class must either implement all of the abstract methods in the superclass, or be declared abstract itself.
 
-![AbstractClass-1]
+![AbstractClass-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/AbstractClass-1.png)
 
 
 ### Final With Inheritance
@@ -305,7 +305,7 @@ Classes and packages are both means of encapsulating and containing the name spa
 
 The three access modifiers, private, public, and protected, provide a variety of ways to produce the many levels of access required by these categories.
 
-![PackageAndMemberAccess]
+![PackageAndMemberAccess](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/PackageAndMemberAccess.png)
 
 Anything declared public can be accessed from different classes and different packages. Anything declared private cannot be seen outside of its class. When a member does not have an explicit access specification, it is visible to subclasses as well as to other classes in the same package. This is the default access. If you want to allow an element to be seen outside your current package, but only to classes that subclass your class directly, then declare that element protected.
 
@@ -319,7 +319,7 @@ To implement an interface, a class must provide the complete set of methods requ
 
 Interfaces are designed to support dynamic method resolution at run time.
 
-![Interface-1]
+![Interface-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Interface-1.png)
 
 When no access modifier is included, then default access results, and the interface is only available to other members of the package in which it is declared. When it is declared as public, the interface can be used by code outside its package. In this case, the interface must be the only public interface declared in the file, and the file must have the same name as the interface. name is the name of the interface, and can be any valid identifier. Notice that the methods that are declared have no bodies. They end with a semicolon after the parameter list. They are, essentially, abstract methods. Each class that includes such an interface must implement all of the methods.
 
@@ -342,7 +342,7 @@ An interface can be declared a member of a class or another interface. Such an i
 
 A default method lets you define a default implementation for an interface method. The primary difference is that the declaration is preceded by the keyword default.
 
-![DefaultMethodInterface]
+![DefaultMethodInterface](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DefaultMethodInterface.png)
 
 Java does not support the multiple inheritance of classes. Now that an interface can include default methods, you might be wondering if an interface can provide a way around this restriction. The answer is, essentially, no. Recall that there is still a key difference between a class and an interface: a class can maintain state information (especially through the use of instance variables), but an interface cannot.
 
