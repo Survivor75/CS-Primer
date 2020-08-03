@@ -93,28 +93,13 @@ container. Parameters can be overridden. There can be only one CMD.
 
 **Images**
 
-Build an image from the Dockerfile in the current directory and tag the image.
-
 `docker build -t [image-name]:1.0`
-
-List all images that are locally stored with the Docker Engine 
 
 `docker image ls`
 
-Delete an image from the local image store
-
 `docker image rm [image-name]:3.5`
 
-
-Pull an image from a registry
-
 `docker pull [image-name]:1.0`
-
-Retag a local image with a new image name and tag
-
-`docker tag [image-name-1]:1.0 [repo-name]/[image-name-2]:2.0`
-
-Push an image to a registry
 
 `docker push [repo-name]/[image-name]:2.0 `
 
@@ -138,15 +123,15 @@ Remove a container
 
 Execute a new process in an existing container
 
-` docker exec -it [container-name] bash`
+`docker exec -it [container-name] bash`
 
 Inspect a container
 
 `docker inspect [container-name]`
 
-` docker logs [container-name] --since 10m`
+`docker logs [container-name] --since 10m`
 
-` docker logs -f [container-name]`
+`docker logs -f [container-name]`
 
 Expose port
 
