@@ -93,12 +93,54 @@ container. Parameters can be overridden. There can be only one CMD.
 
 **Images**
 
-[----------]
+`docker build -t [image-name]:1.0`
+
+`docker image ls`
+
+`docker image rm [image-name]:3.5`
+
+`docker pull [image-name]:1.0`
+
+`docker push [repo-name]/[image-name]:2.0 `
 
 **Containers**
 
-[----------]
+Run a container in interactive mode
 
-**Networking**
+`docker run -it ubuntu bash`
 
-[----------]
+List all containers
+
+`docker ps -a`
+
+Stop a container
+
+`docker stop [container-name|container-id]`
+
+Remove a container
+
+`docker rm [container-name|container-id]`
+
+Execute a new process in an existing container
+
+`docker exec -it [container-name] bash`
+
+Inspect a container
+
+`docker inspect [container-name]`
+
+`docker logs [container-name] --since 10m`
+
+`docker logs -f [container-name]`
+
+Expose port
+
+`docker run -p [host-machine-port]:[container-port] ubuntu bash`
+
+Set environment variables
+
+`docker run -e MYVAR1 --env MYVAR2=foo --env-file ./env.list ubuntu bash`
+
+Mount Volume
+
+`docker run -v [directory-path-in-host-machine]:[directory-path-in-container] ubuntu bash`
