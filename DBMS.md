@@ -647,7 +647,6 @@ Two schedules having multiple transactions with conflicting operations are said 
 
 A transaction in a database can be in one of the following states −
 
-![Transaction States](https://www.tutorialspoint.com/dbms/images/transaction_states.png)
 
 -   **Active**  − In this state, the transaction is being executed. This is the initial state of every transaction.
     
