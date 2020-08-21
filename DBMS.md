@@ -70,7 +70,7 @@ The database management system can be divided into five major components, they a
 
 Let's have a simple diagram to see how they all fit together to form a database management system.
 
-![components of database management system](https://www.studytonight.com/dbms/images/components-of-dbms.png)
+![components of database management system](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-1.png)
 
 **DBMS Components: Hardware**
 
@@ -139,7 +139,7 @@ Database Architecture is logically of two types:
 
 An application interface known as  **ODBC**(Open Database Connectivity) provides an API that allow client side program to call the DBMS. Most DBMS vendors provide ODBC drivers for their DBMS.
 
-![2-tier dbms architecture](https://www.studytonight.com/dbms/images/2-tier-dbms.png)
+![2-tier dbms architecture](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-2.png)
 
 Such an architecture provides the DBMS extra security as it is not exposed to the End User directly. Also, security can be improved by adding security and authentication checks in the Application layer too.
 
@@ -147,7 +147,7 @@ Such an architecture provides the DBMS extra security as it is not exposed to th
 
 3-tier DBMS architecture is the most commonly used architecture for web applications.
 
-![3-tier dbms architecture](https://www.studytonight.com/dbms/images/3-tier-dbms.png)
+![3-tier dbms architecture](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-3.png)
 
 It is an extension of the 2-tier architecture. In the 2-tier architecture, we have an application layer which can be accessed programatically to perform various operations on the DBMS. The application generally understands the Database Access Language and processes end users requests to the DBMS.
 
@@ -175,7 +175,7 @@ This model efficiently describes many real-world relationships like index of a b
 
 In hierarchical model, data is organised into tree-like structure with one one-to-many relationship between two different types of data, for example, one department can have many courses, many professors and of-course many students.
 
-![Hierarchical Model of database](https://www.studytonight.com/dbms/images/hierarchical-dbms-model.png)
+![Hierarchical Model of database](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-4.png)
 
 **Network Model**
 
@@ -185,7 +185,7 @@ In this database model data is more related as more relationships are establishe
 
 This was the most widely used database model, before Relational Model was introduced.
 
-![Network Model of database](https://www.studytonight.com/dbms/images/network-dbms-model.png)
+![Network Model of database](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-5.png)
 
 **Entity-relationship Model**
 
@@ -199,7 +199,7 @@ This model is good to design a database, which can then be turned into tables in
 
 Let's take an example, If we have to design a School Database, then  **Student**  will be an  **entity**  with  **attributes**  name, age, address etc. As  **Address**  is generally complex, it can be another  **entity**  with  **attributes**  street name, pincode, city etc, and there will be a relationship between them.
 
-![E-R Model of database](https://www.studytonight.com/dbms/images/attribute-example.jpg)
+![E-R Model of database](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-6.png)
 
 **Relational Model**
 
@@ -211,7 +211,7 @@ The basic structure of data in the relational model is tables. All the informati
 
 Hence, tables are also known as  **relations**  in relational model.
 
-![Relational Model of database](https://www.studytonight.com/dbms/images/relational-dbms-model.png)
+![Relational Model of database](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-7.png)
 
 ### ER Model
 
@@ -280,7 +280,7 @@ ER Diagram is a visual representation of data that describes how data is related
 
 For example, in the below diagram, anyone can see and understand what the diagram wants to convey:  _Developer develops a website, whereas a Visitor visits a website_.
 
-![example of er-diagram](https://www.studytonight.com/dbms/images/er-diagram.jpg)
+![example of er-diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-8.png)
 
 ----------
 
@@ -294,7 +294,7 @@ Let's see how we can represent these in our ER Diagram.
 
 Simple rectangular box represents an Entity.
 
-![Entity in ER diagram](https://www.studytonight.com/dbms/images/er-entity.png)
+![Entity in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-9.png)
 
   
 
@@ -302,7 +302,7 @@ Simple rectangular box represents an Entity.
 
 Rhombus is used to setup relationships between two or more entities.
 
-![Relationships in ER diagram](https://www.studytonight.com/dbms/images/er-relationship.png)
+![Relationships in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-10.png)
 
   
 
@@ -310,7 +310,7 @@ Rhombus is used to setup relationships between two or more entities.
 
 Ellipse is used to represent attributes of any entity. It is connected to the entity.
 
-![Attribute in ER diagram](https://www.studytonight.com/dbms/images/er-attributes.png)
+![Attribute in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-111.png)
 
   
 
@@ -318,7 +318,7 @@ Ellipse is used to represent attributes of any entity. It is connected to the en
 
 A weak Entity is represented using double rectangular boxes. It is generally connected to another entity.
 
-![Weak Entity in ER diagram](https://www.studytonight.com/dbms/images/er-weak-entity.png)
+![Weak Entity in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-12.png)
 
   
 
@@ -326,7 +326,7 @@ A weak Entity is represented using double rectangular boxes. It is generally con
 
 To represent a Key attribute, the attribute name inside the Ellipse is underlined.
 
-![Key Attribute in ER diagram](https://www.studytonight.com/dbms/images/er-key-attr.png)
+![Key Attribute in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-13.png)
 
   
 
@@ -336,7 +336,7 @@ Derived attributes are those which are derived based on other attributes, for ex
 
 To represent a derived attribute, another dotted ellipse is created inside the main ellipse.
 
-![Derived Attribute in ER diagram](https://www.studytonight.com/dbms/images/er-derived-attr.png)
+![Derived Attribute in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-14.png)
 
   
 
@@ -344,7 +344,7 @@ To represent a derived attribute, another dotted ellipse is created inside the m
 
 Double Ellipse, one inside another, represents the attribute which can have multiple values.
 
-![Multivalued Attribute in ER diagram](https://www.studytonight.com/dbms/images/er-multi-attr.png)
+![Multivalued Attribute in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-15.png)
 
   
 
@@ -352,7 +352,7 @@ Double Ellipse, one inside another, represents the attribute which can have mult
 
 A composite attribute is the attribute, which also has attributes.
 
-![Composite Attribute in ER diagram](https://www.studytonight.com/dbms/images/er-composite-attr.png)
+![Composite Attribute in ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-16.png)
 
 ----------
 
@@ -360,7 +360,7 @@ A composite attribute is the attribute, which also has attributes.
 
 An  **Entity**  can be any object, place, person or class. In ER Diagram, an  **entity**  is represented using rectangles. Consider an example of an Organisation- Employee, Manager, Department, Product and many more can be taken as entities in an Organisation.
 
-![Entity example ER Diagram](https://www.studytonight.com/dbms/images/entity-example.jpg)
+![Entity example ER Diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-17.png)
 
 The yellow rhombus in between represents a relationship.
 
@@ -370,7 +370,7 @@ The yellow rhombus in between represents a relationship.
 
 Weak entity is an entity that depends on another entity. Weak entity doesn't have anay key attribute of its own. Double rectangle is used to represent a weak entity.
 
-![weak Entity example ER diagram](https://www.studytonight.com/dbms/images/weak-entity-example.jpg)
+![weak Entity example ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-18.png)
 
 ----------
 
@@ -378,7 +378,7 @@ Weak entity is an entity that depends on another entity. Weak entity doesn't hav
 
 An  **Attribute**  describes a property or characterstic of an entity. For example,  **Name**,  **Age**,  **Address**  etc can be attributes of a  **Student**. An attribute is represented using eclipse.
 
-![attribute example](https://www.studytonight.com/dbms/images/attribute-example.jpg)
+![attribute example](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-19.png)
 
 ----------
 
@@ -386,7 +386,7 @@ An  **Attribute**  describes a property or characterstic of an entity. For examp
 
 Key attribute represents the main characterstic of an Entity. It is used to represent a Primary key. Ellipse with the text underlined, represents Key Attribute.
 
-![key attribute example er diagram](https://www.studytonight.com/dbms/images/key-attribute-example.jpg)
+![key attribute example er diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-20.png)
 
 ----------
 
@@ -394,7 +394,7 @@ Key attribute represents the main characterstic of an Entity. It is used to repr
 
 An attribute can also have their own attributes. These attributes are known as  **Composite**  attributes.
 
-![composite attribute example](https://www.studytonight.com/dbms/images/composite-attribute-example.jpg)
+![composite attribute example](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-21.png)
 
 ----------
 
@@ -402,7 +402,7 @@ An attribute can also have their own attributes. These attributes are known as  
 
 A Relationship describes relation between  **entities**. Relationship is represented using diamonds or rhombus.
 
-![relationship example er diagram](https://www.studytonight.com/dbms/images/relationship-example.jpg)
+![relationship example er diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-22.png)
 
 There are three types of relationship that exist between Entities.
 
@@ -422,7 +422,7 @@ Binary Relationship means relation between two Entities. This is further divided
 
 This type of relationship is rarely seen in real world.
 
-![one-to-one relationship example er diagram](https://www.studytonight.com/dbms/images/one-to-one-example.jpg)
+![one-to-one relationship example er diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-23.png)
 
 The above example describes that one student can enroll only for one course and a course will also have only one Student. This is not what you will usually see in real-world relationships.
 
@@ -432,7 +432,7 @@ The above example describes that one student can enroll only for one course and 
 
 The below example showcases this relationship, which means that 1 student can opt for many courses, but a course can only have 1 student. Sounds weird! This is how it is.
 
-![one-to-many example](https://www.studytonight.com/dbms/images/one-to-many-example.jpg)
+![one-to-many example](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-24.png)
 
   
 
@@ -440,13 +440,13 @@ The below example showcases this relationship, which means that 1 student can op
 
 It reflects business rule that many entities can be associated with just one entity. For example, Student enrolls for only one Course but a Course can have many Students.
 
-![one-to-many example](https://www.studytonight.com/dbms/images/many-to-one.jpg)
+![one-to-many example](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-25.png)
 
   
 
 **Many to Many Relationship**
 
-![many-to-many example](https://www.studytonight.com/dbms/images/many-to-many-example.jpg)
+![many-to-many example](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-26.png)
 
 The above diagram represents that one student can enroll for more than one courses. And a course can have more than 1 student enrolled in it.
 
@@ -456,7 +456,7 @@ The above diagram represents that one student can enroll for more than one cours
 
 When an Entity is related with itself it is known as  **Recursive**  Relationship.
 
-![recursive relationship example ER diagram](https://www.studytonight.com/dbms/images/recursive-relationship.jpg)
+![recursive relationship example ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-27.png)
 
 ----------
 
@@ -466,7 +466,7 @@ Relationship of degree three is called Ternary relationship.
 
 A Ternary relationship involves three entities. In such relationships we always consider two entites together and then look upon the third.
 
-![ternary relationship example ER diagram](https://www.studytonight.com/dbms/images/ternary-relationship.png)
+![ternary relationship example ER diagram](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-28.png)
 
 For example, in the diagram above, we have three related entities,  **Company**,  **Product**  and  **Sector**. To understand the relationship better or to define rules around the model, we should relate two entities and then derive the third one.
 
@@ -496,7 +496,7 @@ Let's understand what they are, and why were they added to the existing ER Model
 
 It's more like Superclass and Subclass system, but the only difference is the approach, which is bottom-up. Hence, entities are combined to form a more generalised entity, in other words, sub-classes are combined to form a super-class.
 
-![generalization in ER model](https://www.studytonight.com/dbms/images/generalization.jpg)
+![generalization in ER model](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-29.png)
 
 For example,  **Saving**  and  **Current**  account types entities can be generalised and an entity with name  **Account**  can be created, which covers both.
 
@@ -506,7 +506,7 @@ For example,  **Saving**  and  **Current**  account types entities can be genera
 
 **Specialization**  is opposite to Generalization. It is a top-down approach in which one higher level entity can be broken down into two lower level entity. In specialization, a higher level entity may not have any lower-level entity sets, it's possible.
 
-![Specialization in ER Model](https://www.studytonight.com/dbms/images/specialization.jpg)
+![Specialization in ER Model](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-30.png)
 
 ----------
 
@@ -514,7 +514,7 @@ For example,  **Saving**  and  **Current**  account types entities can be genera
 
 Aggregration is a process when relation between two entities is treated as a  **single entity**.
 
-![aggregration](https://www.studytonight.com/dbms/images/aggregration.jpg)
+![aggregration](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DB-31.png)
 
 In the diagram above, the relationship between  **Center**  and  **Course**  together, is acting as an Entity, which is in relationship with another entity  **Visitor**. Now in real world, if a Visitor or a Student visits a Coaching Center, he/she will never enquire about the center only or just about the course, rather he/she will ask enquire about both.
 
