@@ -110,7 +110,7 @@ Unlike C++ there is no explicit way to destroy object.
 
 In the below image, you can understand that if an object does not have any reference than it will be dumped by the JVM.
 
-![garbage collection in java](https://www.studytonight.com/java/images/garbage-collection.jpg)
+![garbage collection in java](https://github.com/Survivor75/CS-Primer/blob/master/images/GC.png)
 
 ----------
 
