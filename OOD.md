@@ -1,3 +1,5 @@
+## Object Oriented Design
+
  1. Fundamentals
 	 - Class
 	 - Object
@@ -49,7 +51,16 @@ Perhaps the most important thing to understand about a class is that it defines 
 
 A simplified general form of a class definition is shown here:
 
-![Class-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Class-1.png)
+    class className {
+	    type instance-variable-1
+	    type instance-variable-2
+	    //...
+	    type instance-variable-N
+	    type methodName1(parameterList) {// body of method}
+	    type methodName2(parameterList) {// body of method}
+	    //...
+	    type methodNameN(parameterList) {// body of method}
+    }
 
 The data, or variables, defined within a class are called instance variables. The code is contained within methods. Collectively, the methods and variables defined within a class are called members of the class.
 
@@ -85,21 +96,115 @@ this can be used inside any method to refer to the current object. That is, this
 
 ### Garbage Collection
 
-Since objects are dynamically allocated by using the new operator, you might be wondering how such objects are destroyed and their memory released for later reallocation. In some languages, such as traditional C++, dynamically allocated objects must be manually released by use of a delete operator. Java takes a different approach; it handles deallocation for you automatically. The technique that accomplishes this is called garbage collection. It works like this: when no references to an object exist, that object is assumed to be no longer needed, and the memory occupied by the object can be reclaimed. There is no need to explicitly destroy objects. Garbage collection only occurs sporadically (if at all) during the execution of your program. It will not occur simply because one or more objects exist that are no longer used. Furthermore, different Java run-time implementations will take varying approaches to garbage collection, but for the most part, you should not have to think about it while writing your programs.
+Java garbage collection is the  **process of releasing unused memory**  occupied by unused objects. This process is done by the JVM automatically because it is essential for memory management.
 
+When a Java programs run on the JVM, objects are created on the heap, which is a portion of memory dedicated to the program. Eventually, some objects will no longer be needed.
+
+When there is no reference to an object, then that object is assumed to be no longer needed and the memory occupied by the object are released. This technique is called  **Garbage Collection**.
+
+**How Garbage Collection Works?**
+
+The garbage collection is a part of the JVM and is an automatic process done by JVM. We do not need to explicitly mark objects to be deleted. However, we can request to the JVM for garbage collection of an object but ultimately it depends on the JVM to call garbage collector.
+
+Unlike C++ there is no explicit way to destroy object.
+
+In the below image, you can understand that if an object does not have any reference than it will be dumped by the JVM.
+
+![garbage collection in java](https://www.studytonight.com/java/images/garbage-collection.jpg)
+
+----------
+
+**Can the Garbage Collection be forced explicitly ?**
+
+No, the Garbage Collection can not be forced explicitly. We may request JVM for  **garbage collection**  by calling  **System.gc()**  method. But This does not guarantee that JVM will perform the garbage collection.
+
+----------
+
+**Advantages of Garbage Collection**
+
+1.  Programmer doesn't need to worry about dereferencing an object.
+2.  It is done automatically by JVM.
+3.  Increases memory efficiency and decreases the chances for memory leak.
+
+An object is able to get garbage collect if it is non-reference. We can make an object non-reference by using three ways.
+
+1. set null to object reference which makes it able for garbage collection. For example:
+
+```java
+
+Demo demo = new Demo();
+demo = null; // ready for garbage collection
+
+```
+
+2. We can non-reference an object by setting new reference to it which makes it able for garbage collection. For example
+
+    `Demo demo = new Demo();
+Demo demo2 = new Demo();
+demo2 = demo // referring object` 
+
+3.  **Anonymous object**  does not have any reference so if it is not in use, it is ready for the garbage collection.
+
+----------
+
+**`finalize()`  method**
+
+Sometime an object will need to perform some specific task before it is destroyed such as closing an open connection or releasing any resources held. To handle such situation  **finalize()**  method is used.
+
+The  **finalize()**  method is  **called by garbage collection thread before collecting object**. Its the last chance for any object to perform cleanup utility.
+
+Signature of  **finalize()**  method
+
+```java
+protected void finalize()
+{
+ //finalize-code
+}
+```
+
+----------
+
+**Some Important Points to Remember**
+
+1.  It is defined in java.lang.Object class, therefore it is available to all the classes.
+2.  It is declare as proctected inside Object class.
+3.  It gets called only once by a Daemon thread named GC (Garbage Collector) thread.
+
+----------
+
+**Request for Garbage Collection**
+
+We can request to JVM for garbage collection however, it is upto the JVM when to start the garbage collector.
+
+Java  **gc()**  method is used to call garbage collector explicitly. However gc() method does not guarantee that JVM will perform the garbage collection. It only request the JVM for garbage collection. This method is present in  **System and Runtime class**.
+
+**Example of gc() Method**
+
+Let's take an example and understand the functioning of the gc() method.
+
+```java
+public class Test
+{
+
+    public static void main(String[] args)
+    {
+        Test t = new Test();
+        t=null;
+        System.gc();
+    }
+    public void finalize()
+    {
+        System.out.println("Garbage Collected");
+    }
+}
+```
 ### Argument Passing
 
 In general, there are two ways that a computer language can pass an argument to a subroutine. The first way is call-by-value. This approach copies the value of an argument into the formal parameter of the subroutine. Therefore, changes made to the parameter of the subroutine have no effect on the argument. The second way an argument can be passed is call-by-reference. In this approach, a reference to an argument (not the value of the argument) is passed to the parameter. Inside the subroutine, this reference is used to access the actual argument specified in the call. This means that changes made to the parameter will affect the argument used to call the subroutine. As you will see, although Java uses call-by-value to pass all arguments, the precise effect differs between whether a primitive type or a reference type is passed.
 
 When you pass a primitive type to a method, it is passed by value. Thus, a copy of the argument is made, and what occurs to the parameter that receives the argument has no effect outside the method.
 
-![ArgumentPassing-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/ArgumentPassing-1.png)
-![ArgumentPassing-2](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/ArgumentPassing-2.png)
-
 When you pass an object to a method, the situation changes dramatically, because objects are passed by what is effectively call-by-reference. Keep in mind that when you create a variable of a class type, you are only creating a reference to an object. Thus, when you pass this reference to a method, the parameter that receives it will refer to the same object as that referred to by the argument. This effectively means that objects act as if they are passed to methods by use of call-by-reference. Changes to the object inside the method do affect the object used as an argument.
-
-![ArgumentPassing-3](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/ArgumentPassing-3.png)
-
 
 ### Access Control
 
@@ -133,7 +238,23 @@ Methods declared as static have several restrictions:
 
 If you need to do computation in order to initialize your static variables, you can declare a static block that gets executed exactly once, when the class is first loaded.
 
-![Static-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Static-1.png)
+    class UseStatic {
+	    static int a = 3;
+	    static int b;
+
+	    static void meth(int x){
+		    System.out.println("x = " + x)
+		    System.out.println("a = " + a)
+		    System.out.println("b = " + b)
+	    }
+	    
+		static {
+			System.out.println("Static block initialized.");
+			b = a*4;
+		}
+		
+		public static void main(String args[]) {meth(42)}
+    }
 
 As soon as the UseStatic class is loaded, all of the static statements are run. First, a is set to 3, then the static block executes, which prints a message and then initializes b to a*4 or 12. Then main( ) is called, which calls meth( ), passing 42 to x. The three println( ) statements refer to the two static variables a and b, as well as to the parameter x.
 
@@ -170,7 +291,33 @@ There are two types of nested classes: static and non-static. A static nested cl
 
 The most important type of nested class is the inner class. An inner class is a non-static nested class. It has access to all of the variables and methods of its outer class and may refer to them directly in the same way that other non-static members of the outer class do.
 
-![NestedInnerClass-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/NestedInnerClass-1.png)
+```java
+class Outer
+{
+  public void display()
+  {
+    Inner in=new Inner();
+    in.show();
+  }
+
+  class Inner
+  {
+    public void show()
+    {
+      System.out.println("Inside inner");
+    }
+  }
+}
+
+class Test
+{
+  public static void main(String[] args)
+  {
+    Outer ot = new Outer();
+    ot.display();
+  }
+}
+```
 
 ### Inheritance
 
@@ -179,9 +326,7 @@ Inheritance is one of the cornerstones of object-oriented programming because it
 The general form of a class declaration that inherits a superclass is shown here:
 
     class subclass-name extends superclass-name { 
-
-    // body of class
-
+	    // body of class
     }
 
 You can only specify one superclass for any subclass that you create. Java does not support the inheritance of multiple superclasses into a single subclass. You can, as stated, create a hierarchy of inheritance in which a subclass becomes a superclass of another subclass. However, no class can be a superclass of itself.
@@ -221,8 +366,6 @@ When a class hierarchy is created, in what order are the constructors for the cl
 
 For example, given a subclass called B and a superclass called A, is A’s constructor executed before B’s, or vice versa? The answer is that in a class hierarchy, constructors complete their execution in order of derivation, from superclass to subclass. 
 
-![WhenConstructorsAreExecuted](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/WhenConstructorsAreExecuted.png)
-
 Further, since super( ) must be the first statement executed in a subclass’ constructor, this order is the same whether or not super( ) is used. 
 
 If super( ) is not used, then the default or parameterless constructor of each superclass will be executed.
@@ -231,9 +374,30 @@ If super( ) is not used, then the default or parameterless constructor of each s
 
 In a class hierarchy, when a method in a subclass has the same name and type signature as a method in its superclass, then the method in the subclass is said to override the method in the superclass. When an overridden method is called from within its subclass, it will always refer to the version of that method defined by the subclass. The version of the method defined by the superclass will be hidden.
 
-*If you wish to access the superclass version of an overridden method, you can do so by using super.*
+```java
+class Animal
+{
+    public void eat()
+    {
+        System.out.println("Eat all eatables");
+    }
+}
 
-![MethodOverriding](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/MethodOverriding.png)
+class Dog extends Animal
+{
+    public void eat()   //eat() method overridden by Dog class.
+    {
+        System.out.println("Dog like to eat meat");
+    }
+    
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.eat();
+    }
+}
+```
+
+*If you wish to access the superclass version of an overridden method, you can do so by using super.*
 
 ### Dynamic Method Dispatch
 
@@ -241,13 +405,33 @@ Indeed, if there were nothing more to method overriding than a name space conven
 
 Let’s begin by restating an important principle: a superclass reference variable can refer to a subclass object. Java uses this fact to resolve calls to overridden methods at run time. Here is how. When an overridden method is called through a superclass reference, Java determines which version of that method to execute based upon the type of the object being referred to at the time the call occurs. Thus, this determination is made at run time. When different types of objects are referred to, different versions of an overridden method will be called. In other words, it is the type of the object being referred to (not the type of the reference variable) that determines which version of an overridden method will be executed. Therefore, if a superclass contains a method that is overridden by a subclass, then when different types of objects are referred to through a superclass reference variable, different versions of the method are executed.
 
-![DynamicMethodDispatch](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DynamicMethodDispatch.png)
+```java
+class Game
+{
+ 	public void type()
+ 	{  
+ 		System.out.println("Indoor & Outdoor"); 
+ 	}
+}
 
-The output from the program is shown here:
+Class Basketball extends Game
+{
+ 	public void type()
+ 	{  
+ 		System.out.println("Outdoor game"); 
+	}
 
-    Inside A's callme method 
-    Inside B's callme method 
-    Inside C's callme method
+ 	public static void main(String[] args)
+ 	{
+   		Game gm = new Game();
+   		Basketball bb = new Basketball();
+   		gm.type();
+   		bb.type();
+   		gm = bb;	//gm refers to Basketball object
+   		gm.type();	//calls Basketball's version of type
+ 	}
+}
+```
 
 ### Abstract Class
 
@@ -259,8 +443,56 @@ You can require that certain methods be overridden by subclasses by specifying t
 
 Any class that contains one or more abstract methods must also be declared abstract. To declare a class abstract, you simply use the abstract keyword in front of the class keyword at the beginning of the class declaration. There can be no objects of an abstract class. That is, an abstract class cannot be directly instantiated with the new operator. Such objects would be useless, because an abstract class is not fully defined. Also, you cannot declare abstract constructors, or abstract static methods. Any subclass of an abstract class must either implement all of the abstract methods in the superclass, or be declared abstract itself.
 
-![AbstractClass-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/AbstractClass-1.png)
+In this example, we created an abstract class A that contains a method `callme()` and Using class B, we are extending the abstract class.
 
+```java
+abstract class A
+{
+  abstract void callme();
+}
+class B extends A
+{
+  void callme()
+  {
+    System.out.println("Calling...");
+  }
+  public static void main(String[] args)
+  {  
+    B b = new B();
+    b.callme();
+  }
+}
+```
+
+Abstract classes can also have non abstract methods along with abstract methods. But remember while extending the class, provide definition for the abstract method.
+
+```java
+abstract class A
+{
+  abstract void callme();
+  public void show()
+  {
+    System.out.println("this is non-abstract method");
+  }
+}
+
+class B extends A
+{
+  void callme()
+  {
+    System.out.println("Calling...");
+  }
+  public static void main(String[] args)
+  {
+    B b = new B();
+    b.callme();
+    b.show();
+  }
+```
+
+    Output
+    calling... 
+    this is non-abstract method
 
 ### Final With Inheritance
 
@@ -318,9 +550,35 @@ To implement an interface, a class must provide the complete set of methods requ
 
 Interfaces are designed to support dynamic method resolution at run time.
 
-![Interface-1](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/Interface-1.png)
+```java
+interface interface_name {  
+// fields
+// abstract/private/default methods
+}
+```
 
 When no access modifier is included, then default access results, and the interface is only available to other members of the package in which it is declared. When it is declared as public, the interface can be used by code outside its package. In this case, the interface must be the only public interface declared in the file, and the file must have the same name as the interface. name is the name of the interface, and can be any valid identifier. Notice that the methods that are declared have no bodies. They end with a semicolon after the parameter list. They are, essentially, abstract methods. Each class that includes such an interface must implement all of the methods.
+
+```java
+interface Moveable
+{
+ 	int AVG-SPEED = 40;
+ 	void move();
+}
+
+class Vehicle implements Moveable
+{
+ 	public void move()
+ 	{
+  		System .out. print in ("Average speed is"+AVG-SPEED");
+ 	}
+ 	public static void main (String[] arg)
+ 	{
+  		Vehicle vc = new Vehicle();
+  		vc.move();
+ 	}
+}
+```
 
 *As the general form shows, variables can be declared inside interface declarations. They are implicitly final and static, meaning they cannot be changed by the implementing class. They must also be initialized. All methods and variables are implicitly public.*
 
@@ -331,9 +589,45 @@ The general form of a class that includes the implements clause looks like this:
 	    // body of class
     }
 
+```java
+interface Moveable
+{
+ 	boolean isMoveable();
+}
+
+interface Rollable
+{
+ 	boolean isRollable
+}
+
+class Tyre implements Moveable, Rollable
+{
+ 	int width;
+
+ 	boolean isMoveable()
+ 	{
+  		return true;
+ 	}
+
+ 	boolean isRollable()
+ 	{
+  		return true;
+ 	}
+ 	
+ 	public static void main(String args[])
+ 	{
+  		Tyre tr = new Tyre();
+  		System.out.println(tr.isMoveable());
+  		System.out.println(tr.isRollable());
+ 	}
+}
+```
+
 You can declare variables as object references that use an interface rather than a class type. Any instance of any class that implements the declared interface can be referred to by such a variable. When you call a method through one of these references, the correct version will be called based on the actual instance of the interface being referred to. This is one of the key features of interfaces. The method to be executed is looked up dynamically at run time, allowing classes to be created later than the code which calls methods on them. The calling code can dispatch through an interface without having to know anything about the “callee.”
 
 *An interface reference variable has knowledge only of the methods declared by its interface declaration.*
+
+
 
 If a class includes an interface but does not fully implement the methods required by that interface, then that class must be declared as abstract.
 
@@ -341,9 +635,39 @@ An interface can be declared a member of a class or another interface. Such an i
 
 A default method lets you define a default implementation for an interface method. The primary difference is that the declaration is preceded by the keyword default.
 
-![DefaultMethodInterface](https://github.com/Survivor75/Software-Engineering-Primer/blob/master/images/DefaultMethodInterface.png)
+```java
+interface Abc{  
+    // Default method   
+    default void msg(){  
+        System.out.println("This is default method");  
+    }  
+    // Abstract method  
+    void greet(String msg);  
+}  
+public class Demo implements Abc{  
+    public void greet(String msg){        // implementing abstract method   
+        System.out.println(msg);  
+    }  
+    public static void main(String[] args) {  
+    	Demo d = new Demo();  
+        d.msg();   // calling default method  
+        d.greet("Say Hi");  // calling abstract method  
+  
+    }  
+} 
+```
 
 Java does not support the multiple inheritance of classes. Now that an interface can include default methods, you might be wondering if an interface can provide a way around this restriction. The answer is, essentially, no. Recall that there is still a key difference between a class and an interface: a class can maintain state information (especially through the use of instance variables), but an interface cannot.
+
+**Difference between an interface and an abstract class?**
+
+|Abstract class|  Interface|
+|--|--|
+| Abstract class is a class which contain one or more abstract methods, which has to be implemented by its sub classes. |  Interface is a Java Object containing method declaration but no implementation. The classes which implement the Interfaces must provide the method definition for all the methods.|
+| Abstract class is a Class prefix with an abstract keyword followed by Class definition.| Interface is a pure abstract class which starts with interface keyword.|
+| Abstract class can also contain concrete methods.| Whereas, Interface contains all abstract methods and final variable declarations.|
+| Abstract classes are useful in a situation that Some general methods should be implemented and specialization behavior should be implemented by child classes.| Interfaces are useful in a situation that all properties should be implemented.|
+
 
 ### Use static Methods in an Interface
 
