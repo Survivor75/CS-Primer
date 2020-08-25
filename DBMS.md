@@ -9,6 +9,7 @@
  7. Generalization and Specialization
  8. Database Normalization
  9. Transactions 
+ 10. Credits
 
  ### Overview
  
@@ -659,3 +660,7 @@ A transaction in a database can be in one of the following states −
     -   Re-start the transaction
     -   Kill the transaction
 -   **Committed**  − If a transaction executes all its operations successfully, it is said to be committed. All its effects are now permanently established on the database system.
+
+ ### Credits
+
+-   [StudyTonight](www.studytonight.com)
