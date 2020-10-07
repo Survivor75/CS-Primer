@@ -145,7 +145,7 @@ Mount Volume
 
 `docker run -v [directory-path-in-host-machine]:[directory-path-in-container] ubuntu bash`
 
-## Scaling Docker
+## Effective Use
 
 The following concepts relate to using docker effectively.
 
