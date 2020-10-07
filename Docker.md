@@ -1,4 +1,4 @@
-## Docker Cheat Sheet
+## Docker
 
 ## Introduction
 
@@ -144,3 +144,43 @@ Set environment variables
 Mount Volume
 
 `docker run -v [directory-path-in-host-machine]:[directory-path-in-container] ubuntu bash`
+
+## Scaling Docker
+
+The following concepts relate to using docker effectively.
+
+**Process has PID 1 inside docker container**
+
+The [`--init`  flag](https://docs.docker.com/engine/reference/run/#specify-an-init-process) of `docker run` causes the `tini` init system to be used as the `ENTRYPOINT`. As a consequence, the application running in the container will be a child process of the init system so that it can take care of signal handling and zombie reaping
+
+**The PID 1 problem: reaping zombies**
+
+Unix processes are ordered in a tree. Each process can spawn child processes, and each process has a parent except for the top-most process.
+
+This top-most process is the init process. It is started by the kernel when you boot your system. This init process is responsible for starting the rest of the system, such as starting the SSH daemon, starting the Docker daemon, starting Apache/Nginx etc. Each of them may in turn spawn further child processes.
+
+![Docker-1]()
+
+Nothing special so far. But consider what happens if a process terminates. Let's say that the bash (PID 5) process terminates. It turns into a so-called "defunct process", also known as a "zombie process".
+
+![Docker-2]()
+
+Why does this happen? It's because Unix is designed in such a way that parent processes must explicitly "wait" for child process termination, in order to collect its exit status. The zombie process exists until the parent process has performed this action, using the [waitpid()](http://linux.die.net/man/2/waitpid) family of system calls.
+
+Most of the time this is not a problem. The action of calling `waitpid()` on a child process in order to eliminate its zombie, is called "reaping". Many applications reap their child processes correctly. In the above example with sshd, if bash terminates then the operating system will send a SIGCHLD signal to sshd to wake it up. Sshd notices this and reaps the child process.
+
+![Docker-3]()
+
+But there is a special case. Suppose the parent process terminates, either intentionally (because the program logic has determined that it should exit), or caused by a user action (e.g. the user killed the process). What happens then to its children? They no longer have a parent process, so they become "orphaned" (this is the actual technical term).
+
+And this is where the init process kicks in. The init process -- PID 1 -- has a special task. Its task is to "adopt" orphaned child processes (again, this is the actual technical term). This means that the init process becomes the parent of such processes, even though those processes were never created directly by the init process.
+
+![Docker-4]()
+
+**Why zombie processes are harmful**
+
+A child that terminates, but has not been waited for becomes a "zombie". The kernel maintains a minimal set of information about the zombie process (PID, termination status, resource usage information) in order to allow the parent to later perform a wait to obtain information about the child. As long as a zombie is not removed from the system via a wait, it will consume a slot in the kernel process table, and if this table fills, it will not be possible to create further processes.
+
+**Relationship with Docker**
+
+Let's look at a concrete example. Suppose that your container contains a web server that runs a CGI script that's written in bash. The CGI script calls grep. Then the web server decides that the CGI script is taking too long and kills the script, but grep is not affected and keeps running. When grep finishes, it becomes a zombie and is adopted by the PID 1 (the web server). The web server doesn't know about grep, so it doesn't reap it, and the grep zombie stays in the system.
